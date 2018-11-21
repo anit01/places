@@ -181,6 +181,11 @@ export default function places(options) {
 
   placesInstance.autocomplete = autocompleteInstance;
 
+  placesInstance.search = (query = '') =>
+    new Promise(resolve => {
+      autocompleteDataset.source(query, resolve);
+    });
+
   placesInstance.configure = configuration => {
     const safeConfig = Object.assign({}, configuration);
 
